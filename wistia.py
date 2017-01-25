@@ -33,7 +33,7 @@ if (options.cred is None):
 # list projects.
 w = wistia.api.WistiaAPI("api", options.cred)
 if (options.list_projects):
-	projects_json = w.list_projects()
+	projects_json = w.call("projects.json",{"sort_by": "created"})
 	projects = json.loads(projects_json)
 	for p in projects:
 		print "%s \"%s\" %s" % (p['id'], p['name'], p['mediaCount'])
